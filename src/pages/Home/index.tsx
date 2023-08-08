@@ -13,6 +13,29 @@ import LogoLinkedin from "../../assets/img/linkedin.svg"
 function Home() {
     // Paranaue de typescript
 
+    function mostrarMenu() {
+        let menu = document.getElementById("menu_links") as HTMLCanvasElement; // Obtém o elemento do menu pelo ID
+        let sombra: any = document.getElementById("sombra"); // Obtém o elemento da sombra pelo ID
+        let menu_barras: any = document.getElementById("menu_barras"); // Obtém o elemento do botão do menu pelo ID
+
+        let body: any = document.getElementsByTagName("body")[0]; // Obtém o elemento body (primeiro elemento)
+
+        if (window.getComputedStyle(menu).left != "10px") { // Verifica se a propriedade 'left' do estilo computado do elemento do menu é diferente de 10px
+            menu.style.left = "10px"; // Define a posição 'left' do menu como 10px movendo ele para direita
+            sombra.style.right = "-10vw"; // Move a sombra para a direita
+            menu_barras.setAttribute("aria-expanded", "true"); // Atualiza o atributo 'aria-expanded' para 'true'
+            menu_barras.setAttribute("aria-label", "fechar menu"); // Atualiza o atributo 'aria-label' para 'fechar menu'
+            body.style.overflow = "hidden"; // Define o overflow do body como "hidden" para evitar a rolagem da página
+        } else {
+            menu.style.left = "-300px"; // Esconde o menu deslocando-o para esquerda
+            sombra.style.right = "110vw"; // Move a sombra para a esquerda para ocultá-la
+            menu_barras.setAttribute("aria-expanded", "false"); // Atualiza o atributo 'aria-expanded' para 'false'
+            menu_barras.setAttribute("aria-label", "abrir menu"); // Atualiza o atributo 'aria-label' para 'abrir menu'
+            body.style.overflow = "auto"; // Restaura o overflow do body para o valor padrão (auto)
+        }
+        menu_barras.classList.toggle("ativo"); // Alterna a classe 'ativo' no botão do menu
+
+    }
     return (
         <>
             <div id="sombra" />
@@ -32,12 +55,12 @@ function Home() {
                         aria-expanded="false"
                         aria-controls="menu_links"
                         aria-haspopup="true"
-                        // onclick="mostrarMenu()"
+                        onClick={mostrarMenu}
                         href="#"
                     >
                         <div className="barras" />
                     </a>
-                    <img className="header_logo" src={ Logo } alt="" />
+                    <img className="header_logo" src={Logo} alt="" />
                     <nav>
                         <div id="menu_links" className="menu_links">
                             <a href="../Home/index.html">home</a>
@@ -87,7 +110,7 @@ function Home() {
                         </p>
                     </div>
                     <div className="clientes_conteudo">
-                        <img src={ ImgClientes } alt="" />
+                        <img src={ImgClientes} alt="" />
                         <div className="clientes_texto">
                             <h2>para clientes</h2>
                             <ul>
@@ -116,13 +139,13 @@ function Home() {
                             </a>
                         </div>
                     </div>
-                    <img src={ ImgMaosDev } alt="" />
+                    <img src={ImgMaosDev} alt="" />
                 </section>
                 <section className="container servicos">
                     <h2>serviços</h2>
                     <div className="servicos_cards">
                         <div className="card card1">
-                            <img src={ ImgAlfinete } alt="" />
+                            <img src={ImgAlfinete} alt="" />
                             <h3>Aplicativo para PetShop</h3>
                             <p>
                                 Possuo um Petshop e gostaria de um aplicativo para que meus clientes
@@ -132,7 +155,7 @@ function Home() {
                             <p>Proposta: A Combinar</p>
                         </div>
                         <div className="card card2">
-                            <img src={ ImgAlfinete } alt="" />
+                            <img src={ImgAlfinete} alt="" />
                             <h3>Site para Pizzaria</h3>
                             <p>
                                 Preciso de um site para divulgar o sabores das pizzas, o endereço,
@@ -147,7 +170,7 @@ function Home() {
             <footer>
                 <div className="container rodape">
                     <div className="span_dicas">
-                        <img src={ ImgDev } alt="" />
+                        <img src={ImgDev} alt="" />
                         <div className="span_dicas_texto">
                             <p>
                                 Temos algumas dicas para o seu serviço ou freela ser um sucesso,
@@ -169,18 +192,18 @@ function Home() {
                                 <li>Cadastrar Desenvolvedor</li>
                             </ul>
                         </div>
-                        <img src={ Logo } alt="" />
+                        <img src={Logo} alt="" />
                         <div className="rodape_conteudo_contatos">
                             <h2>Contatos</h2>
                             <div>
                                 <a href="#">
-                                    <img src={ LogoFacebook } alt="" />
+                                    <img src={LogoFacebook} alt="" />
                                 </a>
                                 <a href="#">
-                                    <img src={ LogoInstagram } alt="" />
+                                    <img src={LogoInstagram} alt="" />
                                 </a>
                                 <a href="#">
-                                    <img src={ LogoLinkedin } alt="" />
+                                    <img src={LogoLinkedin} alt="" />
                                 </a>
                             </div>
                             <a href="mailto:">contato@vsconnect.com</a>
