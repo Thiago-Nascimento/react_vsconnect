@@ -14,8 +14,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'prefer-const': ["warn", {
-      
-    }]
+    'prefer-const': "off",
+    "@typescript-eslint/no-explicit-any": "off"
   },
 }
